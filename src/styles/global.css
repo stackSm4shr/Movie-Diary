@@ -1,0 +1,68 @@
+:root {
+  --ct-rosewater: #f5e0dc;
+  --ct-flamingo: #f2cdcd;
+  --ct-pink: #f5c2e7;
+  --ct-mauve: #cba6f7;
+  --ct-red: #f38ba8;
+  --ct-maroon: #eba0ac;
+  --ct-peach: #fab387;
+  --ct-yellow: #f9e2af;
+  --ct-green: #a6e3a1;
+  --ct-teal: #94e2d5;
+  --ct-sky: #89dceb;
+  --ct-sapphire: #74c7ec;
+  --ct-blue: #89b4fa;
+  --ct-lavender: #b4befe;
+  --ct-text: #cdd6f4;
+  --ct-subtext1: #bac2de;
+  --ct-subtext0: #a6adc8;
+  --ct-overlay2: #9399b2;
+  --ct-overlay1: #7f849c;
+  --ct-overlay0: #6c7086;
+  --ct-surface2: #585b70;
+  --ct-surface1: #45475a;
+  --ct-surface0: #313244;
+  --ct-base: #1e1e2e;
+  --ct-mantle: #181825;
+  --ct-crust: #11111b;
+
+  /* Jelly options */
+  --jelly-radius: 1.25rem;
+  --jelly-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Create Custom Utilities --- */
+@layer utilities {
+  /* Background colors */
+  .bg-ct-base {
+    background-color: var(--ct-base);
+  }
+  .bg-ct-mantle {
+    background-color: var(--ct-mantle);
+  }
+  .bg-ct-crust {
+    background-color: var(--ct-crust);
+  }
+
+  /* Text colors */
+  .text-ct-text {
+    color: var(--ct-text);
+  }
+
+  /* Border radius */
+  .rounded-jelly {
+    border-radius: var(--jelly-radius);
+  }
+
+  /* Shadow */
+  .shadow-jelly {
+    box-shadow: var(--jelly-shadow);
+  }
+
+  .btn-jelly {
+    @apply px-4 py-2 text-white;
+    border-radius: var(--jelly-radius);
+    box-shadow: var(--jelly-shadow);
+    background-color: var(--ct-mauve);
+  }
+}

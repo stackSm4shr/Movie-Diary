@@ -1,4 +1,7 @@
-const API_KEY = "9b06866fcad71d8b66f39ef400f9591d";
+import "./main.css";
+import "./scripts/journal.js";
+
+const API_KEY = process.env.TMDB_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
