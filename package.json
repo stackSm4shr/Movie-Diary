@@ -1,0 +1,30 @@
+{
+  "name": "movie-diary",
+  "version": "1.0.0",
+  "description": "A **Movie Diary** web app built with **JavaScript**, **Tailwind CSS**, and the **TMDB API**.   Browse popular movies, search for titles, save your favourites, and add personal notes to build your own movie journal.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "webpack serve --open",
+    "build": "webpack --mode production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv-webpack": "^8.1.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.4",
+    "mini-css-extract-plugin": "^2.9.4",
+    "postcss": "^8.5.6",
+    "postcss-loader": "^8.2.0",
+    "postcss-preset-env": "^10.4.0",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^4.1.13",
+    "webpack": "^5.102.0",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  }
+}
