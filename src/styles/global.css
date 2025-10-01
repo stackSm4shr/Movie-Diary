@@ -30,7 +30,29 @@
   --jelly-radius: 1.25rem;
   --jelly-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
-
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--ct-text);
+  }
+  p,
+  span,
+  li {
+    color: var(--ct-subtext1);
+  }
+  a {
+    color: var(--ct-blue);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  a:hover {
+    color: var(--ct-pink);
+  }
+}
 /* --- Create Custom Utilities --- */
 @layer utilities {
   /* Background colors */
@@ -59,10 +81,102 @@
     box-shadow: var(--jelly-shadow);
   }
 
-  .btn-jelly {
-    @apply px-4 py-2 text-white;
+  /* Jelly Card Container */
+  .jelly-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     border-radius: var(--jelly-radius);
     box-shadow: var(--jelly-shadow);
-    background-color: var(--ct-mauve);
+    background-color: var(--ct-surface1);
+    color: var(--ct-text);
+    backdrop-filter: blur(8px);
+    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .jelly-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .jelly-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-top-left-radius: var(--jelly-radius);
+    border-top-right-radius: var(--jelly-radius);
+  }
+
+  /* Content inside card */
+  .jelly-card .card-content {
+    padding: 0 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  /* Centered title */
+  .jelly-card h3 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: var(--ct-text);
+    text-align: center;
+    margin: 0;
+  }
+
+  /* Text */
+  .jelly-card p {
+    font-size: 0.875rem;
+    color: var(--ct-subtext1);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Button styling */
+  .jelly-card .btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: var(--ct-mantle);
+    text-align: center;
+    text-decoration: none;
+    border-radius: var(--jelly-radius);
+    box-shadow: var(--jelly-shadow);
+    background-color: var(--ct-green);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    align-self: center;
+  }
+
+  .jelly-card .btn:hover {
+    background-color: var(--ct-teal);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    color: var(--ct-surface1);
+  }
+
+  .btn-jelly {
+    @apply px-4 py-2 font-semibold text-white transition-all duration-300;
+    border-radius: var(--jelly-radius);
+    background-color: var(--ct-blue);
+    box-shadow: var(--jelly-shadow);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+  }
+
+  .btn-jelly:hover {
+    background-color: var(--ct-sapphire);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
   }
 }
