@@ -1,13 +1,11 @@
 import { fetchTrailer } from "./fetchTrailer";
 import { IMAGE_BASE_URL } from "./config";
+import placeholderImg from "../assets/img/placeholder-img.png";
 
 export async function displayMovies(movies) {
   const container = document.getElementById("movie-cards");
-
-  // reset content
   container.textContent = "";
 
-  // check if movie is found in search if no, show message
   if (movies.length === 0) {
     const message = document.createElement("p");
     message.textContent = "No movies found.";
@@ -15,53 +13,65 @@ export async function displayMovies(movies) {
     return;
   }
 
-  // building cards for fetched movies with for loop
   for (const movie of movies) {
     const trailerUrl = await fetchTrailer(movie.id);
 
     // create movie card
     const card = document.createElement("div");
-    card.className = "card";
+    card.className = "card jelly-card";
 
-    // create image
+    // create image (flush to card edges)
     const img = document.createElement("img");
-    //check with ternary operator if truthy if not show placeholder
     img.src = movie.poster_path
       ? IMAGE_BASE_URL + movie.poster_path
-      : "https://via.placeholder.com/200x300?text=No+Image";
+      : placeholderImg;
     card.appendChild(img);
 
-    // create Movie Title
+    // create content container for text + button
+    const contentContainer = document.createElement("div");
+    contentContainer.className = "card-content";
+
+    // movie title
     const title = document.createElement("h3");
     title.textContent = movie.title;
-    card.appendChild(title);
+    contentContainer.appendChild(title);
 
-    // create relasedate
+    // release date
     if (movie.release_date) {
       const release = document.createElement("p");
-      release.textContent = "Release: " + (movie.release_date || "Unknown");
-      card.appendChild(release);
-    }
-    //create description
-    if (movie.overview) {
-      const overview = document.createElement("p");
-      //check with ternary operator if truthy if not show "No description available."
-      overview.textContent = movie.overview
-        ? movie.overview.slice(0, 100) + "..."
-        : "No description available.";
-      card.appendChild(overview);
+
+      const date = new Date(movie.release_date);
+      const formattedDate = new Intl.DateTimeFormat("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      }).format(date);
+
+      release.textContent = "Release: " + formattedDate; // e.g., "2 October 2024"
+      contentContainer.appendChild(release);
     }
 
-    // check if there is a trailer and append button if true
+    // overview
+    const overview = document.createElement("p");
+    overview.textContent = movie.overview
+      ? movie.overview.slice(0, 100) + "..."
+      : "No description available.";
+    contentContainer.appendChild(overview);
+
+    // trailer button
     if (trailerUrl) {
       const trailerBtn = document.createElement("a");
       trailerBtn.href = trailerUrl;
       trailerBtn.target = "_blank";
       trailerBtn.className = "btn";
       trailerBtn.textContent = "Watch Trailer";
-      card.appendChild(trailerBtn);
+      contentContainer.appendChild(trailerBtn);
     }
 
+    // append content container to card
+    card.appendChild(contentContainer);
+
+    // append card to container
     container.appendChild(card);
   }
 }
