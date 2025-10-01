@@ -17,6 +17,10 @@ export default {
         include: path.resolve("src"),
         use: ["style-loader", "css-loader", "postcss-loader"],
       },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: "asset/resource",
+      },
     ],
   },
   plugins: [
@@ -32,7 +36,7 @@ export default {
   devServer: {
     static: "./dist",
     hot: true,
-    watchFiles: ["./pages/**/*.html", "./src/**/*.js"], // <-- add this line
+    watchFiles: ["./pages/**/*.html", "./src/**/*.js"],
   },
   mode: "development",
 };
