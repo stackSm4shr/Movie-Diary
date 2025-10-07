@@ -1,8 +1,5 @@
 import "./main.css";
-import "./scripts/journal.js";
-import { fetchPopularMovies } from "./scripts/fetchMovies.js";
-import { searchMovies } from "./scripts/searchbarHandling.js";
+import "./scripts/pages/journal.js";
+import { initRoutes } from "./scripts/utils/router.js";
 
-// call function to fetch popular Movies
-fetchPopularMovies();
-searchMovies();
+initRoutes();
