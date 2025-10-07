@@ -1,6 +1,7 @@
 import { fetchTrailer } from "./fetchTrailer";
 import { IMAGE_BASE_URL } from "./utils/config";
 import placeholderImg from "../assets/img/placeholder-img.png";
+import { favoriteButton } from "./favorite";
 
 export async function displayMovies(movies) {
   const container = document.getElementById("movie-cards");
@@ -68,6 +69,14 @@ export async function displayMovies(movies) {
       trailerBtn.textContent = "Watch Trailer";
       contentContainer.appendChild(trailerBtn);
     }
+
+    // call function to save favorite to local storage and build button
+    favoriteButton(
+      movie.title,
+      IMAGE_BASE_URL + movie.poster_path,
+      contentContainer,
+      movie.id
+    );
 
     // append content container to card
     card.appendChild(contentContainer);
