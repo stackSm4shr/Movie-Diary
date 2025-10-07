@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.1.0",
+    "@tailwindcss/postcss": "^4.1.14",
     "dotenv-webpack": "^8.1.1"
   },
   "devDependencies": {
