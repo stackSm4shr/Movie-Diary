@@ -1,12 +1,13 @@
 import { fetchTrailer } from "./fetchTrailer";
-import { IMAGE_BASE_URL } from "./config";
+import { IMAGE_BASE_URL } from "./utils/config";
 import placeholderImg from "../assets/img/placeholder-img.png";
 
 export async function displayMovies(movies) {
   const container = document.getElementById("movie-cards");
+  if (!container) return;
   container.textContent = "";
 
-  if (movies.length === 0) {
+  if (!Array.isArray(movies) || movies.length === 0) {
     const message = document.createElement("p");
     message.textContent = "No movies found.";
     container.appendChild(message);

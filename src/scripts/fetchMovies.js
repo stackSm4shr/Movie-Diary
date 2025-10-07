@@ -1,4 +1,4 @@
-import { API_KEY, BASE_URL } from "./config.js";
+import { API_KEY, BASE_URL } from "./utils/config.js";
 import { displayMovies } from "./createMovieCard.js";
 // function to fetch popular movies
 export async function fetchPopularMovies() {
@@ -6,6 +6,5 @@ export async function fetchPopularMovies() {
     `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
   );
   const data = await res.json();
-  document.getElementById("section-title").textContent = "Popular Movies";
-  displayMovies(data.results);
+  return data.results || [];
 }
