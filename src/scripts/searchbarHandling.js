@@ -28,7 +28,7 @@ export function searchMovies() {
 
   if (!inputEl || !btnEl) return;
 
-  // TODO:debounce to avoid multiple uneccesary API calls on input
+  // Debounce
   let debounceTimeout;
   const debounce = (func, delay = 400) => {
     return (...args) => {
